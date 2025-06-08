@@ -1,16 +1,37 @@
-# Fintech App Review Analysis - Task 1
+# Bank Reviews Analysis
 
-## Objective
-Collect and preprocess 1,200+ user reviews from Google Play Store for three Ethiopian banks (CBE, BOA, Dashen) to support fintech app improvement.
+## Task 1: Data Collection and Preprocessing
 
-## Methodology
-- Used `google-play-scraper` to collect reviews.
-- Targeted 400+ reviews per bank.
-- Extracted: review, rating, date, bank name, and source.
-- Cleaned data: removed duplicates, handled missing, normalized dates.
-- Saved to CSV for further NLP and sentiment analysis.
+### Methodology
 
-## Result
-- Reviews collected: 1,200+
-- Missing data: < 5%
-- File: `clean_reviews.csv`
+1. **Data Collection**:
+   - Used `google-play-scraper` Python package
+   - Targeted 3 major US banks:
+     - Chase (`com.chase.sig.android`)
+     - Bank of America (`com.infonow.bofa`)
+     - Wells Fargo (`com.wf.wellsfargomobile`)
+   - Collected 400+ English reviews per bank (NEWEST first)
+   - Implemented rate limiting (2s between requests)
+
+2. **Preprocessing**:
+   - Removed duplicate reviews
+   - Handled missing values:
+     - Dropped reviews with empty text
+     - Filled missing ratings with 0
+   - Normalized dates to YYYY-MM-DD format
+   - Removed very short reviews (<5 characters)
+
+### Files
+
+- `scraper.py`: Main scraping script
+- `preprocess.py`: Data cleaning pipeline
+- `bank_reviews.csv`: Raw scraped data
+- `clean_reviews.csv`: Processed dataset
+
+### How to Run
+
+```bash
+pip install -r requirements.txt
+python scraper.py
+python preprocess.py
+```

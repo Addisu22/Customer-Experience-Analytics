@@ -1,0 +1,14 @@
+# Initial setup
+git add .gitignore requirements.txt README.md
+git commit -m "Initial project setup"
+
+# After implementing scraper
+git add scraper.py
+git commit -m "Implement core scraping functionality with rate limiting"
+
+# After preprocessing
+git add preprocess.py
+git commit -m "Add data cleaning pipeline"
+
+# Final push
+git push origin task-1
